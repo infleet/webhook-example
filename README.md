@@ -162,6 +162,7 @@ sent and incremented with time
 | `driverChange`        |               [ ]                | Troca de motorista             |
 | `ignitionOff`         |               [ ]                | Veículo desligado              |
 | `ignitionOn`          |               [ ]                | Veículo ligado                 |
+| `deviceIdle`          |               [x]                | Veículo ocioso                 |
 | `simCardExceeded`     |               [ ]                | Excesso de tráfego no SIM Card |
 | `rebooting`           |               [ ]                | Restart                        |
 | `mainCameraError`     |               [ ]                | Erro câmera 1                  | 
