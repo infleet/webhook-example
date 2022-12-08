@@ -139,30 +139,48 @@ sent and incremented with time
 
 ### Events
 
-| Slug name          | Has `is_initial` state attribute | Description                  |
-| ------------------ | :------------------------------: | ---------------------------- |
-| `trailerOpen`      |               [ ]                | Abertura do baú              |
-| `cockpitDoorOpen`  |               [ ]                | Abertura da cabine           |
-| `hardAcceleration` |               [ ]                | Aceleração brusca            |
-| `boardActivated`   |               [ ]                | Acionamento ativado          |
-| `boardDeactivated` |               [ ]                | Acionamento desativado       |
-| `hardCornering`    |               [ ]                | Curva acentuada              |
-| `plugged`          |               [ ]                | Dispositivo conectado        |
-| `unplugged`        |               [ ]                | Dispositivo desconectado     |
-| `geofenceEnter`    |               [ ]                | Entrou na cerca              |
-| `deviceOverspeed`  |               [x]                | Excesso de velocidade        |
-| `routeOverspeed`   |               [x]                | Excesso de velocidade na via |
-| `fault`            |               [ ]                | Falha                        |
-| `cockpitDoorClose` |               [ ]                | Fechamento da cabine         |
-| `hardBraking`      |               [ ]                | Frenagem brusca              |
-| `deviceMoving`     |               [ ]                | Movimento                    |
-| `deviceStopped`    |               [ ]                | Parada                       |
-| `geofenceExit`     |               [ ]                | Saiu da cerca                |
-| `deviceOverweight` |               [ ]                | Sobrepeso                    |
-| `driverChange`     |               [ ]                | Troca de motorista           |
-| `ignitionOff`      |               [ ]                | Veículo desligado            |
-| `ignitionOn`       |               [ ]                | Veículo ligado               |
-| `deviceIdle`       |               [x]                | Veículo ocioso               |
+| Slug name             | Has `is_initial` state attribute | Description                    |
+| --------------------- | :------------------------------: | ------------------------------ |
+| `trailerOpen`         |               [ ]                | Abertura do baú                |
+| `cockpitDoorOpen`     |               [ ]                | Abertura da cabine             |
+| `hardAcceleration`    |               [ ]                | Aceleração brusca              |
+| `boardActivated`      |               [ ]                | Acionamento ativado            |
+| `boardDeactivated`    |               [ ]                | Acionamento desativado         |
+| `hardCornering`       |               [ ]                | Curva acentuada                |
+| `plugged`             |               [ ]                | Dispositivo conectado          |
+| `unplugged`           |               [ ]                | Dispositivo desconectado       |
+| `geofenceEnter`       |               [ ]                | Entrou na cerca                |
+| `deviceOverspeed`     |               [x]                | Excesso de velocidade          |
+| `routeOverspeed`      |               [x]                | Excesso de velocidade na via   |
+| `fault`               |               [ ]                | Falha                          |
+| `cockpitDoorClose`    |               [ ]                | Fechamento da cabine           |
+| `hardBraking`         |               [ ]                | Frenagem brusca                |
+| `deviceMoving`        |               [ ]                | Movimento                      |
+| `deviceStopped`       |               [ ]                | Parada                         |
+| `geofenceExit`        |               [ ]                | Saiu da cerca                  |
+| `deviceOverweight`    |               [ ]                | Sobrepeso                      |
+| `driverChange`        |               [ ]                | Troca de motorista             |
+| `ignitionOff`         |               [ ]                | Veículo desligado              |
+| `ignitionOn`          |               [ ]                | Veículo ligado                 |
+| `deviceIdle`          |               [x]                | Veículo ocioso                 |
+| `simCardExceeded`     |               [ ]                | Excesso de tráfego no SIM Card |
+| `rebooting`           |               [ ]                | Restart                        |
+| `mainCameraError`     |               [ ]                | Erro câmera 1                  | 
+| `secondaryCameraError`|               [ ]                | Erro câmera 2                  |
+| `simCardError`        |               [ ]                | Erro no SIM Card               |
+| `powerCut`            |               [ ]                | Corte de energia               |
+| `newDriver`           |               [ ]                | Novo motorista                 |
+| `missingUSBCamera`    |               [ ]                | Sem câmera USB                 |
+| `collisionRisk`       |               [ ]                | Risco de colisão               |
+| `fuelCut`             |               [ ]                | Corte de combustível           |
+| `parkingMode`         |               [ ]                | Modo estacionamento            |
+| `missingDriver`       |               [ ]                | Sem motorista                  |
+| `recordActive`        |               [ ]                | Captura ativa                  |
+| `fatigue`             |               [ ]                | Fadiga                         |
+| `usingPhone`          |               [ ]                | Celular                        |
+| `smoking`             |               [ ]                | Fumo                           |
+| `distraction`         |               [ ]                | Distração                      |
+| `yamning`             |               [ ]                | Bocejo                         |
 
 When the event does have the attribute `is_initial` and the value is equal to `false`,
 the event payload will have some additional information, like: `duration`, `distance`,
