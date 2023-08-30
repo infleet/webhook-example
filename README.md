@@ -128,7 +128,8 @@ type Payload {
       "course": 132,
       "original_type": "ignitionOff",
       "speed": 0,
-      "unique_id": "358735073823063"
+      "unique_id": "358735073823063",
+      "geofence_name": "Sector A" // available to events geofenceEnter, geofenceExit
     }
   }
 }
