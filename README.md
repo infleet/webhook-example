@@ -144,6 +144,16 @@ type Payload {
 PS.: When the vehicle `type` states _equipment,_ instead of `odometer` , `horimeter` measure is
 sent and incremented with time
 
+### Media URL
+
+To access the event media, you should construct the following URL:
+
+```
+https://graphql.infleet.com.br/vehicles/[VEHICLE_ID]/events/[EVENT_ID]/media
+```
+
+You should replace VEHICLE_ID and EVENT_ID with the values present inside the payload that you received.
+
 ### Events
 
 | Slug name             | Has `is_initial` state attribute | Description                    |
