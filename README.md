@@ -125,7 +125,7 @@ type Payload {
       "type": "truck" // bus, truck, car, motorcycle, trailer, garbage_collector
     },
     "attributes": {
-      // available for some events when the devices is a câmera
+      // available for certain events when the device is a camera
       "media": {
         "camera": 1,
         "file_name": "EVENT_358735073823063_00000000_2024_01_26_20_15_06_51.mp4",
