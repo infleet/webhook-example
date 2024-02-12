@@ -70,19 +70,19 @@ type Payload {
     "course": 358.18, // Range of 0° - 360°
     "accuracy": 16.2, // Radius value for precision in meters (m)
     "attributes": {
-      "ignition": false, // Vehicle ignition status
-      "unique_id": "358735073823063", // Device IMEI
-      "driver_token": "271377231923726", // iButton
-      "altitude_accuracy": 24.8, // Unit in meters (m) for altitude precision
-      "route_speed_limit": 80.0, // Unit in km/h, this speed is defined by: https://wiki.openstreetmap.org/wiki/OSM_tags_for_routing/Maxspeed#Brazil
+      "ignition": false, // Vehicle ignition status Or NULL
+      "unique_id": "358735073823063", // Device IMEI Or NULL
+      "driver_token": "271377231923726", // iButton Or NULL
+      "altitude_accuracy": 24.8, // Unit in meters (m) for altitude precision Or NULL
+      "route_speed_limit": 80.0, // Unit in km/h, this speed is defined by: https://wiki.openstreetmap.org/wiki/OSM_tags_for_routing/Maxspeed#Brazil Or NULL
       "original_attributes": {
         // ... all other extra attributes provided by the gateway/device
-      },
+      }, // JSON Or NULL
       "address": {
         "category": "highway",
         "type": "residential"
-      },
-      "odometer": 150.2638702011607 // Odometer considered on the system
+      }, // JSON Or NULL
+      "odometer": 150.2638702011607 // Odometer considered on the system Or NULL
     },
     "vehicle": {
       "id": "44dfd5cd-9f2f-449e-a5f5-769b5adfef34",
@@ -111,8 +111,8 @@ type Payload {
     "latitude": -13.001733333333334,
     "longitude": -38.511248888888886,
     "slug_name": "ignitionOff",
-    "course": 132, // Range of 0° - 360°
-    "speed": 0, // Unit in km/h
+    "course": 132, // Range of 0° - 360° OR Null
+    "speed": 0, // Unit in km/h OR Null
     // The driver could be `null` also
     "driver": {
       "id": "6c466f6c-37d9-47a5-9c5c-98d9e4cf2ceb",
@@ -125,17 +125,25 @@ type Payload {
       "type": "truck" // bus, truck, car, motorcycle, trailer, garbage_collector
     },
     "attributes": {
-      // available for certain events when the device is a camera
+      // available for certain events when the device is a camera, this could be Null, this will be deprecated soon the `medias` is available
       "media": {
         "camera": 1,
         "file_name": "EVENT_358735073823063_00000000_2024_01_26_20_15_06_51.mp4",
         "file_type": "mp4"
       },
-      "course": 132,
-      "original_type": "ignitionOff",
-      "speed": 0,
-      "unique_id": "358735073823063",
-      "geofence_name": "Sector A" // available to events geofenceEnter, geofenceExit
+      // available for certain events when the device is a camera, this also could be Null, not available yet
+      "medias": [
+        {
+          "camera": 1,
+          "file_name": "EVENT_358735073823063_00000000_2024_01_26_20_15_06_51.mp4",
+          "file_type": "mp4"
+        },
+      ],
+      "course": 132, // Or NULL
+      "original_type": "ignitionOff", // Or NULL
+      "speed": 0, // Or NULL
+      "unique_id": "358735073823063", // Or NULL
+      "geofence_name": "Sector A" // available to events geofenceEnter, geofenceExit Or NULL
     }
   }
 }
