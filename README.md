@@ -137,7 +137,7 @@ type Payload {
           "camera": 1,
           "file_name": "EVENT_358735073823063_00000000_2024_01_26_20_15_06_51.mp4",
           "file_type": "mp4"
-        },
+        }
       ],
       "course": 132, // Or NULL
       "original_type": "ignitionOff", // Or NULL
@@ -164,48 +164,57 @@ You should replace VEHICLE_ID and EVENT_ID with the values present inside the pa
 
 ### Events
 
-| Slug name             | Has `is_initial` state attribute | Description                    |
-| --------------------- | :------------------------------: | ------------------------------ |
-| `trailerOpen`         |               [ ]                | Abertura do baú                |
-| `cockpitDoorOpen`     |               [ ]                | Abertura da cabine             |
-| `hardAcceleration`    |               [ ]                | Aceleração brusca              |
-| `boardActivated`      |               [ ]                | Acionamento ativado            |
-| `boardDeactivated`    |               [ ]                | Acionamento desativado         |
-| `hardCornering`       |               [ ]                | Curva acentuada                |
-| `plugged`             |               [ ]                | Dispositivo conectado          |
-| `unplugged`           |               [ ]                | Dispositivo desconectado       |
-| `geofenceEnter`       |               [ ]                | Entrou na cerca                |
-| `deviceOverspeed`     |               [x]                | Excesso de velocidade          |
-| `routeOverspeed`      |               [x]                | Excesso de velocidade na via   |
-| `fault`               |               [ ]                | Falha                          |
-| `cockpitDoorClose`    |               [ ]                | Fechamento da cabine           |
-| `hardBraking`         |               [ ]                | Frenagem brusca                |
-| `deviceMoving`        |               [ ]                | Movimento                      |
-| `deviceStopped`       |               [ ]                | Parada                         |
-| `geofenceExit`        |               [ ]                | Saiu da cerca                  |
-| `deviceOverweight`    |               [ ]                | Sobrepeso                      |
-| `driverChange`        |               [ ]                | Troca de motorista             |
-| `ignitionOff`         |               [ ]                | Veículo desligado              |
-| `ignitionOn`          |               [ ]                | Veículo ligado                 |
-| `deviceIdle`          |               [x]                | Veículo ocioso                 |
-| `simCardExceeded`     |               [ ]                | Excesso de tráfego no SIM Card |
-| `rebooting`           |               [ ]                | Restart                        |
-| `mainCameraError`     |               [ ]                | Erro câmera 1                  | 
-| `secondaryCameraError`|               [ ]                | Erro câmera 2                  |
-| `simCardError`        |               [ ]                | Erro no SIM Card               |
-| `powerCut`            |               [ ]                | Corte de energia               |
-| `newDriver`           |               [ ]                | Novo motorista                 |
-| `missingUSBCamera`    |               [ ]                | Sem câmera USB                 |
-| `collisionRisk`       |               [ ]                | Risco de colisão               |
-| `fuelCut`             |               [ ]                | Corte de combustível           |
-| `parkingMode`         |               [ ]                | Modo estacionamento            |
-| `missingDriver`       |               [ ]                | Sem motorista                  |
-| `recordActive`        |               [ ]                | Captura ativa                  |
-| `fatigue`             |               [ ]                | Fadiga                         |
-| `usingPhone`          |               [ ]                | Celular                        |
-| `smoking`             |               [ ]                | Fumo                           |
-| `distraction`         |               [ ]                | Distração                      |
-| `yamning`             |               [ ]                | Bocejo                         |
+| Slug name                | Has `is_initial` state attribute | Description                    |
+| ------------------------ | :------------------------------: | ------------------------------ |
+| `trailerOpen`            |               [ ]                | Abertura do baú                |
+| `cockpitDoorOpen`        |               [ ]                | Abertura da cabine             |
+| `hardAcceleration`       |               [ ]                | Aceleração brusca              |
+| `boardActivated`         |               [ ]                | Acionamento ativado            |
+| `boardDeactivated`       |               [ ]                | Acionamento desativado         |
+| `hardCornering`          |               [ ]                | Curva acentuada                |
+| `plugged`                |               [ ]                | Dispositivo conectado          |
+| `unplugged`              |               [ ]                | Dispositivo desconectado       |
+| `geofenceEnter`          |               [ ]                | Entrou na cerca                |
+| `deviceOverspeed`        |               [x]                | Excesso de velocidade          |
+| `routeOverspeed`         |               [x]                | Excesso de velocidade na via   |
+| `fault`                  |               [ ]                | Falha                          |
+| `cockpitDoorClose`       |               [ ]                | Fechamento da cabine           |
+| `hardBraking`            |               [ ]                | Frenagem brusca                |
+| `deviceMoving`           |               [ ]                | Movimento                      |
+| `deviceStopped`          |               [ ]                | Parada                         |
+| `geofenceExit`           |               [ ]                | Saiu da cerca                  |
+| `deviceOverweight`       |               [ ]                | Sobrepeso                      |
+| `driverChange`           |               [ ]                | Troca de motorista             |
+| `ignitionOff`            |               [ ]                | Veículo desligado              |
+| `ignitionOn`             |               [ ]                | Veículo ligado                 |
+| `deviceIdle`             |               [x]                | Veículo ocioso                 |
+| `simCardExceeded`        |               [ ]                | Excesso de tráfego no SIM Card |
+| `rebooting`              |               [ ]                | Restart                        |
+| `mainCameraError`        |               [ ]                | Erro câmera 1                  |
+| `secondaryCameraError`   |               [ ]                | Erro câmera 2                  |
+| `simCardError`           |               [ ]                | Erro no SIM Card               |
+| `powerCut`               |               [ ]                | Corte de energia               |
+| `newDriver`              |               [ ]                | Novo motorista                 |
+| `missingUSBCamera`       |               [ ]                | Sem câmera USB                 |
+| `collisionRisk`          |               [ ]                | Risco de colisão               |
+| `fuelCut`                |               [ ]                | Corte de combustível           |
+| `parkingMode`            |               [ ]                | Modo estacionamento            |
+| `missingDriver`          |               [ ]                | Sem motorista                  |
+| `recordActive`           |               [ ]                | Captura ativa                  |
+| `fatigue`                |               [ ]                | Fadiga                         |
+| `usingPhone`             |               [ ]                | Celular                        |
+| `smoking`                |               [ ]                | Fumo                           |
+| `distraction`            |               [ ]                | Distração                      |
+| `yawning`                |               [ ]                | Bocejo                         |
+| `requestedVideo`         |               [ ]                | Vídeo solicitado               |
+| `geofenceOverspeed`      |               [x]                | Excesso de velocidade na cerca |
+| `eyesClosed`             |               [ ]                | Olhos fechados                 |
+| `lookingDown`            |               [ ]                | Olhou para baixo               |
+| `cameraCovered`          |               [ ]                | Câmera coberta                 |
+| `memoryCardFull`         |               [ ]                | Cartão de memória cheio        |
+| `noMemoryCard`           |               [ ]                | Sem cartão de memória          |
+| `lowVoltage`             |               [ ]                | Bateria baixa                  |
+| `stoppedOutsideGeofence` |               [ ]                | Parada fora da cerca           |
 
 When the event does have the attribute `is_initial` and the value is equal to `false`,
 the event payload will have some additional information, like: `duration`, `distance`,
