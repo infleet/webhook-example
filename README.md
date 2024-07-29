@@ -162,7 +162,7 @@ sent and incremented with time
 To access the event media, you should construct the following URL:
 
 ```
-https://graphql.infleet.com.br/vehicles/[VEHICLE_ID]/events/[EVENT_ID]/medias/[FILE_NAME]
+https://api.infleet.com.br/v1/vehicles/[VEHICLE_ID]/events/[EVENT_ID]/medias/[FILE_NAME]
 ```
 
 You should replace VEHICLE_ID, EVENT_ID, FILE_NAME with the values present inside the payload that you received.
