@@ -137,6 +137,11 @@ type Payload {
           "camera": 1,
           "file_name": "EVENT_358735073823063_00000000_2024_01_26_20_15_06_51.mp4",
           "file_type": "mp4"
+        },
+        {
+          "camera": 2,
+          "file_name": "EVENT_358735073823063_00000000_2024_01_26_20_15_06_52.mp4",
+          "file_type": "mp4"
         }
       ],
       "course": 132, // Or NULL
@@ -157,10 +162,10 @@ sent and incremented with time
 To access the event media, you should construct the following URL:
 
 ```
-https://graphql.infleet.com.br/vehicles/[VEHICLE_ID]/events/[EVENT_ID]/media
+https://graphql.infleet.com.br/vehicles/[VEHICLE_ID]/events/[EVENT_ID]/medias/[FILE_NAME]
 ```
 
-You should replace VEHICLE_ID and EVENT_ID with the values present inside the payload that you received.
+You should replace VEHICLE_ID, EVENT_ID, FILE_NAME with the values present inside the payload that you received.
 
 ### Events
 
