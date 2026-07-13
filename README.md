@@ -87,7 +87,7 @@ type Payload {
     "vehicle": {
       "id": "44dfd5cd-9f2f-449e-a5f5-769b5adfef34",
       "plate": "JDO8A24",
-      "type": "bus" // bus, truck, car, motorcycle, trailer, garbage_collector
+      "type": "bus" // bus, truck, car, motorcycle, trailer, garbage_collector, equipment
     },
     "driver": {
       "id": "6c466f6c-37d9-47a5-9c5c-98d9e4cf2ceb",
@@ -122,16 +122,16 @@ type Payload {
     "vehicle": {
       "id": "ac715b10-3142-4af2-bd91-08168723bd16",
       "plate": "PLA0001",
-      "type": "truck" // bus, truck, car, motorcycle, trailer, garbage_collector
+      "type": "truck" // bus, truck, car, motorcycle, trailer, garbage_collector, equipment
     },
     "attributes": {
-      // available for certain events when the device is a camera, this could be Null, this will be deprecated soon the `medias` is available
+      // DEPRECATED: use `medias` instead. Kept for backward compatibility, could be Null
       "media": {
         "camera": 1,
         "file_name": "EVENT_358735073823063_00000000_2024_01_26_20_15_06_51.mp4",
         "file_type": "mp4"
       },
-      // available for certain events when the device is a camera, this also could be Null, not available yet
+      // available for certain events when the device is a camera, this could be Null
       "medias": [
         {
           "camera": 1,
@@ -169,58 +169,92 @@ You should replace VEHICLE_ID, EVENT_ID, FILE_NAME with the values present insid
 
 ### Events
 
-| Slug name                | Has `is_initial` state attribute | Description                    |
-| ------------------------ | :------------------------------: | ------------------------------ |
-| `trailerOpen`            |               [ ]                | Abertura do baú                |
-| `cockpitDoorOpen`        |               [ ]                | Abertura da cabine             |
-| `hardAcceleration`       |               [ ]                | Aceleração brusca              |
-| `boardActivated`         |               [ ]                | Acionamento ativado            |
-| `boardDeactivated`       |               [ ]                | Acionamento desativado         |
-| `hardCornering`          |               [ ]                | Curva acentuada                |
-| `plugged`                |               [ ]                | Dispositivo conectado          |
-| `unplugged`              |               [ ]                | Dispositivo desconectado       |
-| `geofenceEnter`          |               [ ]                | Entrou na cerca                |
-| `deviceOverspeed`        |               [x]                | Excesso de velocidade          |
-| `routeOverspeed`         |               [x]                | Excesso de velocidade na via   |
-| `fault`                  |               [ ]                | Falha                          |
-| `cockpitDoorClose`       |               [ ]                | Fechamento da cabine           |
-| `hardBraking`            |               [ ]                | Frenagem brusca                |
-| `deviceMoving`           |               [ ]                | Movimento                      |
-| `deviceStopped`          |               [ ]                | Parada                         |
-| `geofenceExit`           |               [ ]                | Saiu da cerca                  |
-| `deviceOverweight`       |               [ ]                | Sobrepeso                      |
-| `driverChange`           |               [ ]                | Troca de motorista             |
-| `ignitionOff`            |               [ ]                | Veículo desligado              |
-| `ignitionOn`             |               [ ]                | Veículo ligado                 |
-| `deviceIdle`             |               [x]                | Veículo ocioso                 |
-| `simCardExceeded`        |               [ ]                | Excesso de tráfego no SIM Card |
-| `rebooting`              |               [ ]                | Restart                        |
-| `mainCameraError`        |               [ ]                | Erro câmera 1                  |
-| `secondaryCameraError`   |               [ ]                | Erro câmera 2                  |
-| `simCardError`           |               [ ]                | Erro no SIM Card               |
-| `powerCut`               |               [ ]                | Corte de energia               |
-| `newDriver`              |               [ ]                | Novo motorista                 |
-| `missingUSBCamera`       |               [ ]                | Sem câmera USB                 |
-| `collisionRisk`          |               [ ]                | Risco de colisão               |
-| `fuelCut`                |               [ ]                | Corte de combustível           |
-| `parkingMode`            |               [ ]                | Modo estacionamento            |
-| `missingDriver`          |               [ ]                | Sem motorista                  |
-| `recordActive`           |               [ ]                | Captura ativa                  |
-| `fatigue`                |               [ ]                | Fadiga                         |
-| `usingPhone`             |               [ ]                | Celular                        |
-| `smoking`                |               [ ]                | Fumo                           |
-| `distraction`            |               [ ]                | Distração                      |
-| `yawning`                |               [ ]                | Bocejo                         |
-| `requestedVideo`         |               [ ]                | Vídeo solicitado               |
-| `geofenceOverspeed`      |               [x]                | Excesso de velocidade na cerca |
-| `eyesClosed`             |               [ ]                | Olhos fechados                 |
-| `lookingDown`            |               [ ]                | Olhou para baixo               |
-| `cameraCovered`          |               [ ]                | Câmera coberta                 |
-| `memoryCardFull`         |               [ ]                | Cartão de memória cheio        |
-| `noMemoryCard`           |               [ ]                | Sem cartão de memória          |
-| `lowVoltage`             |               [ ]                | Bateria baixa                  |
-| `stoppedOutsideGeofence` |               [ ]                | Parada fora da cerca           |
+The table below reflects the current event catalog of the platform. The actual
+set of events your organization receives depends on the equipment installed in
+each vehicle (tracker, camera, DMS/ADAS support, CAN bus).
 
+#### Telemetry
+
+| Slug name            | Has `is_initial` state attribute | Description                    |
+| -------------------- | :------------------------------: | ------------------------------ |
+| `trailerOpen`        |               [ ]                | Abertura do baú                |
+| `cockpitDoorOpen`    |               [ ]                | Abertura da cabine             |
+| `cockpitDoorClose`   |               [ ]                | Fechamento da cabine           |
+| `geofenceEnter`      |               [ ]                | Entrou na cerca                |
+| `geofenceExit`       |               [ ]                | Saiu da cerca                  |
+| `ignitionOn`         |               [ ]                | Veículo ligado                 |
+| `ignitionOff`        |               [ ]                | Veículo desligado              |
+| `deviceOnline`       |               [ ]                | Equipamento conectado          |
+| `deviceOffline`      |               [ ]                | Equipamento desconectado       |
+| `deviceStopped`      |               [ ]                | Parada / Parada fora da cerca  |
+| `deviceMoving`       |               [ ]                | Movimento                      |
+| `deviceOverspeed`    |               [x]                | Excesso de velocidade          |
+| `routeOverspeed`     |               [x]                | Excesso de velocidade na via   |
+| `geofenceOverspeed`  |               [x]                | Excesso de velocidade na cerca |
+| `deviceIdle`         |               [x]                | Marcha lenta excessiva         |
+| `deviceOverweight`   |               [ ]                | Sobrepeso                      |
+| `boardActivated`     |               [ ]                | Acionamento ativado            |
+| `boardDeactivated`   |               [ ]                | Acionamento desativado         |
+| `plugged`            |               [ ]                | Dispositivo conectado          |
+| `hardAcceleration`   |               [ ]                | Aceleração brusca              |
+| `hardBraking`        |               [ ]                | Frenagem brusca                |
+| `hardCornering`      |               [ ]                | Curva acentuada                |
+
+#### Camera / video telemetry
+
+| Slug name         | Has `is_initial` state attribute | Description             |
+| ----------------- | :------------------------------: | ----------------------- |
+| `cameraCovered`   |               [ ]                | Câmera coberta          |
+| `memoryCardFull`  |               [ ]                | Cartão de memória cheio |
+| `noMemoryCard`    |               [ ]                | Sem cartão de memória   |
+| `lowVoltage`      |               [ ]                | Bateria baixa           |
+| `powerCut`        |               [ ]                | Bloqueio do veículo     |
+| `requestedVideo`  |               [ ]                | Vídeo solicitado        |
+| `unplugged`       |               [ ]                | Dispositivo removido    |
+| `missingDriver`   |               [ ]                | Sem motorista           |
+
+#### DMS (driver monitoring)
+
+| Slug name         | Has `is_initial` state attribute | Description           |
+| ----------------- | :------------------------------: | --------------------- |
+| `fatigue`         |               [ ]                | Fadiga                |
+| `usingPhone`      |               [ ]                | Celular               |
+| `smoking`         |               [ ]                | Fumo                  |
+| `distraction`     |               [ ]                | Distração             |
+| `yawning`         |               [ ]                | Bocejo                |
+| `lookingDown`     |               [ ]                | Olhou para baixo      |
+| `eyesClosed`      |               [ ]                | Olhos fechados        |
+| `faceRecognition` |               [ ]                | Reconhecimento facial |
+
+#### ADAS
+
+| Slug name          | Has `is_initial` state attribute | Description                      |
+| ------------------ | :------------------------------: | -------------------------------- |
+| `laneDeparture`    |               [ ]                | Mudança de faixa                 |
+| `forwardCollision` |               [ ]                | Risco de colisão                 |
+| `vehicleTooClose`  |               [ ]                | Proximidade do veículo dianteiro |
+| `seatbeltUnbuckled`|               [ ]                | Sem cinto de segurança           |
+| `videoLoss`        |               [ ]                | Perda de vídeo                   |
+| `rollover`         |               [ ]                | Capotamento                      |
+
+#### CAN bus
+
+| Slug name         | Has `is_initial` state attribute | Description             |
+| ----------------- | :------------------------------: | ----------------------- |
+| `rpmRedLane`      |               [x]                | Faixa vermelha de RPM   |
+| `rpmCoastingLane` |               [x]                | Movimentação em banguela|
+
+Events flagged with `is_initial` are delivered in pairs: one message marking
+the start (`is_initial: true`) and one marking the end (`is_initial: false`).
 When the event does have the attribute `is_initial` and the value is equal to `false`,
 the event payload will have some additional information, like: `duration`, `distance`,
 `avg_speed`, `max_speed`. The most common filled is `duration`.
+
+#### Removed events
+
+The following slugs were part of older versions of this catalog and are no
+longer emitted by the platform: `collisionRisk` (replaced by `forwardCollision`),
+`driverChange`, `newDriver`, `fault`, `fuelCut`, `mainCameraError`,
+`secondaryCameraError`, `missingUSBCamera`, `recordActive`, `rebooting`,
+`simCardError`, `simCardExceeded`, `parkingMode` and `stoppedOutsideGeofence`
+(replaced by `deviceStopped` outside a geofence).
