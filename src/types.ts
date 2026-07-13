@@ -77,7 +77,9 @@ export type EventAttributes = {
   original_type?: string;
   unique_id?: string;
   is_initial?: boolean;
-  geofence_name?: string;
+  geofence_name?: string | null;
+  /** @deprecated Use `medias` instead. Kept for backward compatibility. */
+  media?: EventMedia | null;
   medias?: EventMedia[] | null;
   [key: string]: any;
 };
