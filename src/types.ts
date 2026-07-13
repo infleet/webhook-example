@@ -65,16 +65,27 @@ export type Event = {
   attributes: EventAttributes;
 };
 
+export type EventMedia = {
+  camera: number;
+  file_name: string;
+  file_type: string;
+};
+
 export type EventAttributes = {
   speed: number;
   course: number;
   original_type?: string;
   unique_id?: string;
+  is_initial?: boolean;
+  geofence_name?: string | null;
+  /** @deprecated Use `medias` instead. Kept for backward compatibility. */
+  media?: EventMedia | null;
+  medias?: EventMedia[] | null;
   [key: string]: any;
 };
 
 export enum EventSlugNameEnum {
-  driverChange = "driverChange",
+  // Telemetry
   trailerOpen = "trailerOpen",
   cockpitDoorOpen = "cockpitDoorOpen",
   cockpitDoorClose = "cockpitDoorClose",
@@ -82,17 +93,47 @@ export enum EventSlugNameEnum {
   geofenceExit = "geofenceExit",
   ignitionOn = "ignitionOn",
   ignitionOff = "ignitionOff",
+  deviceOnline = "deviceOnline",
+  deviceOffline = "deviceOffline",
   deviceStopped = "deviceStopped",
   deviceMoving = "deviceMoving",
   deviceOverspeed = "deviceOverspeed",
   routeOverspeed = "routeOverspeed",
-  hardBraking = "hardBraking",
-  fault = "fault",
-  hardCornering = "hardCornering",
-  hardAcceleration = "hardAcceleration",
+  geofenceOverspeed = "geofenceOverspeed",
+  deviceIdle = "deviceIdle",
   deviceOverweight = "deviceOverweight",
   boardActivated = "boardActivated",
   boardDeactivated = "boardDeactivated",
-  unplugged = "unplugged",
   plugged = "plugged",
+  hardAcceleration = "hardAcceleration",
+  hardBraking = "hardBraking",
+  hardCornering = "hardCornering",
+  // Camera / video telemetry
+  cameraCovered = "cameraCovered",
+  memoryCardFull = "memoryCardFull",
+  noMemoryCard = "noMemoryCard",
+  lowVoltage = "lowVoltage",
+  powerCut = "powerCut",
+  requestedVideo = "requestedVideo",
+  unplugged = "unplugged",
+  missingDriver = "missingDriver",
+  // DMS (driver monitoring)
+  fatigue = "fatigue",
+  usingPhone = "usingPhone",
+  smoking = "smoking",
+  distraction = "distraction",
+  yawning = "yawning",
+  lookingDown = "lookingDown",
+  eyesClosed = "eyesClosed",
+  faceRecognition = "faceRecognition",
+  // ADAS
+  laneDeparture = "laneDeparture",
+  forwardCollision = "forwardCollision",
+  vehicleTooClose = "vehicleTooClose",
+  seatbeltUnbuckled = "seatbeltUnbuckled",
+  videoLoss = "videoLoss",
+  rollover = "rollover",
+  // CAN bus
+  rpmRedLane = "rpmRedLane",
+  rpmCoastingLane = "rpmCoastingLane",
 }
